@@ -1,23 +1,62 @@
 import React from 'react'
 import styled from 'styled-components'
-import phone from '../../assets/images/phone_mockup.jpg'
 import { StaticImage } from 'gatsby-plugin-image'
 
 const Images = () => {
   return (
     <Wrapper>
-      <StaticImage
-        src='../../assets/images/phone_mockup.jpg'
-        alt='phone' />
-      <h2>This is Images component</h2>
+      <article>
+        <h4>constrained / default</h4>
+        <StaticImage
+          src='../../assets/images/recipes/recipe-1.jpeg'
+          alt='food'
+          placeholder='tracedSVG'
+          layout='constrained'
+          className='example-img'
+          as='div'
+        />
+      </article>
+      <article>
+        <h4>fixed</h4>
+        <StaticImage
+          src='../../assets/images/recipes/recipe-1.jpeg'
+          alt='food'
+          placeholder="blurred"
+          layout='fixed'
+          width={200}
+          className='example-img'
+          as='div'
+        />
+      </article>
+      <article>
+        <h4>full width</h4>
+        <StaticImage
+          src='../../assets/images/recipes/recipe-1.jpeg'
+          alt='food'
+          placeholder='dominantColor'
+          layout='fullWidth'
+          className='example-img'
+          as='div'
+        />
+      </article>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-  img {
-    width: 200px;
-  }
+ width: 70vw;
+ margin: 0 auto;
+ display: grid;
+ text-align: center;
+ article {
+   border: 2px solid red;
+ }
+ .example-img {
+   border-radius: 1em;
+ }
+ @media (min-width: 992px) {
+   grid-template-columns: 1fr 1fr 1fr;
+ }
 `
 
 export default Images
